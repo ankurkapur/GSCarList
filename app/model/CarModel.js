@@ -5,8 +5,9 @@ Ext.define('GSCarList.model.CarModel',{
 	],
 	config: {
         fields: [
-            'id',
-            {name: 'name', type: 'string'}
+            {name:'Id',type:'int'},
+            {name: 'name', type: 'string'},
+            {name: 'modelyear', type: 'string'}
         ]
     }
 });

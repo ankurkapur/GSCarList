@@ -6,7 +6,7 @@ Ext.define('GSCarList.store.CarStore',{
 	],
 	model: 'GSCarList.model.CarModel',
 	data:[
-		{name:'Mazda 3'},
-		{name:'Honda Accord'}
+		{Id:1,name:'Mazda 3',modelyear:'2012'},
+		{Id:2,name:'Honda Accord',modelyear:'2013'}
 	]
 });

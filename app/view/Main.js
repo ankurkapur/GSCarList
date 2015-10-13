@@ -3,12 +3,12 @@ Ext.define('GSCarList.view.Main', {
     xtype: 'main',
     requires: [
         'Ext.TitleBar',
-        'GSCarList.store.CarStore'
+        'GSCarList.store.CarStore',
+        'GSCarList.view.CarListings',
+        'GSCarList.util.PositionMap'
     ],
-    //layout: 'vbox',
     config: {
         tabBarPosition: 'bottom',
-        
         items: [
             {
                 title: 'Welcome',
@@ -26,8 +26,7 @@ Ext.define('GSCarList.view.Main', {
                 {
                     xtype:'list',
                     flex:1,
-                    //height:200,
-                    itemTpl:'<br><div style="">{name}</div>',
+                    defaultType:'cardetails',
                     store:Ext.create('GSCarList.store.CarStore')
                 }]
             }
