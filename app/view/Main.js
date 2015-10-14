@@ -16,7 +16,7 @@ Ext.define('GSCarList.view.Main', {
                 layout:{type:'vbox'},
                 styleHtmlContent: true,
                 scrollable: true,
-
+				padding:0,
                 items: [{
                     docked: 'top',
                     xtype: 'titlebar',

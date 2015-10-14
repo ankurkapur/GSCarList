@@ -7716,3 +7716,6 @@ body.x-desktop {
   border-bottom: 1px solid #0d87dc;
   padding: 0 1.02em;
 }
+.carList {
+	font: normal 12px courier !important;
+}

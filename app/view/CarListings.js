@@ -1,43 +1,50 @@
 Ext.define('GSCarList.view.CarListings',{
 	extend:'Ext.dataview.component.ListItem',
 	xtype: 'cardetails',
+	requires: [
+        'GSCarList.view.RotatingCarousel'
+    ],
 	config:{
-		layout:{type:'hbox',align:'strech'},
-		type1:'{name}',
-		type2:'{modelyear}',
-        items:[
-        	{
+		layout:{type:'hbox'},
+		height:100,
+		items:[
+        	
+			/*{
+				xtype: 'image',
+				itemId:'itemImage',
+				//src:'src',
+				width:160
+				
+			},*/
+			{
+				xtype:'rotatingcarousel',
+				itemId:'imgCarousel',
+				width:160
+			},
+			{
         		xtype:'component',
+				cls:'carList',
         		model:'GSCarList.model.CarModel',
-        		listeners:{
-        			'tap':function(e,options){
-        				console.log('clicked');
-        				e.stopPropagation();
-        			}
-        		}
-        		//tpl:'{name}'//<br>{modelyear}'
+        		tpl:'{name}<br>{modelyear}',
+				//flex:1,
+				padding:'0 0 0 4'
+				//flex:3
         	}
         ]
 	},
 	updateRecord:function(record){
 		var allItems = this.getItems();
-		//for(var count=0;count<this.getItems().length;count++){
-		//	if(count == 0){
-			console.log(record.get('Id'));
-		if(record.get('Id') == 1){
-				this.getAt(0).setTpl(this.getType1());
-			}else{
-				this.getAt(0).setTpl(this.getType2());
+		for(var count=0;count<this.getItems().length;count++){
+			this.getAt(count).setRecord(record);
+		}
+		var srcs = Ext.decode(record.get('src'));
+		//this.down('#itemImage').setSrc(srcs[0]);
+		console.log(this.down('#imgCarousel').getItems().length);
+		if(this.down('#imgCarousel').getItems().length == 1){
+			for(var count=0;count<srcs.length;count++){
+				this.down('#imgCarousel').add({xtype:'image',src:srcs[count]});
 			}
-			this.getAt(0).setRecord(record);
-		
+		}
 	}
-	/*applyCaptionPanel:function(config){
-		console.log(config);
-		return Ext.create('Ext.Component',config);
-	},
-	updateCaptionPanel:function(value){
-		this.add(value);
-		//this.add(Ext.create('Ext.Component',{html:'Yo Yo'}));
-	}*/
+	
 });
